@@ -21,11 +21,22 @@ Go to the links below and follow the instructions
 * [NodeJS](https://nodejs.org/en/)
 * [MongoDB](https://www.mongodb.com/download-center?jmp=nav#community)
 
+Install the MongoDB community server
+
+
+
 Then open your command prompt and type the following instruction:
 
 ```
 > npm install -g @angular/cli
 ```
+
+To connect to mongoDB click the link below and follow instructions 1 and 2.
+* [Connect to MongoDB](https://docs.mongodb.com/getting-started/shell/tutorial/install-mongodb-on-windows/#run-mongodb-community-edition)
+
+Leave this running.
+
+
 
 ### Installing and running the project
 
@@ -39,10 +50,6 @@ Then run
 
 > node server.js
 ```
-Go to localhost:3000 in your browser.
-
-Go to the "Generate key" tab and generate a new key/address. Save the both.
-
 
 Open a new command prompt and navigate into the 'miner' folder and run 
 
@@ -52,7 +59,11 @@ Open a new command prompt and navigate into the 'miner' folder and run
 > node createBlockchain.js
 ```
 
-Open the miner.js file and add the address you just created to 'minerAddress = "your address here"'. This is the address that will get the reward for mining blocks.
+Go to localhost:3000 in your browser.
+
+Go to the "Generate key" tab and generate a new key/address. Save both.
+
+Open the miner.js file in the miner folder and add the address you just created to 'minerAddress = "your address here"'. This is the address that will get the reward for mining blocks.
 
 To start mining on the newly created blockchain, run
 ```
@@ -64,6 +75,8 @@ To delete the chain you can run
 ```
 > node createBlockchain.js drop
 ```
+
+You should now have 3 command prompts running. Miner, app and mongo. Enjoy!
 
 
 
