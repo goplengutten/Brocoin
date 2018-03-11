@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <h2>All Transactions</h2>
+    <div *ngIf="fetched; else loading" class="col-xs-7">
+      <div *ngFor="let transaction of transactions">
+        <hr>
+        <div>Sender: {{ transaction.sender }}</div>
+        <div>Receiver: {{ transaction.receiver }}</div>
+        <div>Amount: {{ transaction.amount }}</div>
+        <div>Date: {{ transaction.time }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #loading>
+  <strong>Loading...</strong>
+</ng-template>

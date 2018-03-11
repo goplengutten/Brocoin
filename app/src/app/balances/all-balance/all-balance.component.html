@@ -1,0 +1,28 @@
+<div class="container">
+  <div *ngIf="fetched; else loading">
+    <div class="row">
+      <div class="col-xs-6 text-center">
+        <h3>Address</h3>
+      </div>
+      <div class="col-xs-2 text-center">
+        <h3>Balance</h3>
+      </div>
+    </div> 
+    <br>
+    <div class="row">
+      <div *ngFor="let account of accounts">
+        <div class="col-xs-6 text-center">
+          <p>{{ account.address }}</p>
+        </div>
+        <div class="col-xs-2 text-center">
+          <p><strong>{{ account.amount }}</strong></p>
+        </div>
+      </div>
+    </div>  
+  </div>
+</div>
+
+<ng-template #loading>
+  <strong>Loading...</strong>
+</ng-template>
+  

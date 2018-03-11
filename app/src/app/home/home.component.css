@@ -1,0 +1,8 @@
+#middle{
+  border-left: solid 1px rgb(177, 177, 177);
+  border-right: solid 1px rgb(177, 177, 177);
+}
+
+#wrapper{
+  padding: 10px 30px;
+}

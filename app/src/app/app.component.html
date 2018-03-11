@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="nav nav-tabs">
+        <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="/generatekey">Generate Key</a></li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="/newtransaction">New Transaction</a></li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="/transactionhistory">Transaction History</a></li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="/balances">Balances</a></li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="/information">Information</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+
+
+

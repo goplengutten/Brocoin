@@ -1,0 +1,9 @@
+.text-field{
+  display: inline-block;
+  width: 550px;
+}
+
+.well{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

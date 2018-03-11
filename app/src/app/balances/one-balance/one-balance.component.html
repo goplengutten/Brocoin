@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">      
+        <div class="form-group">
+          <label for="address"><strong>Address:</strong></label>
+          <input 
+            type="text"
+            class="form-control"
+            ngModel
+            name="address"
+            required
+            pattern="[A-Fa-f0-9]{64}"
+            #addressField="ngModel">
+          <span class="help-block" *ngIf="!addressField.valid && addressField.touched">Please enter a valid address</span>
+        </div>
+        <button 
+          class="btn btn-primary" 
+          type="submit"
+          [disabled]="!addressForm.form.valid">
+          Get Balance
+        </button>
+      </form>
+      <hr>
+    </div>
+  </div>
+  <div *ngIf="address" class="row">
+    <p>Current Address: {{ address }}</p>
+    <div *ngIf="fetched; else loading">
+      <div class="col-xs-8">
+        <p>Total balance: <strong>{{ balance }}</strong></p>
+        <p>BRO sent: <strong>{{ sent }}</strong></p>
+        <p>BRO received: <strong>{{ received }}</strong></p>
+        <p>BRO earned from mining: <strong>{{ mined }}</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<ng-template #loading>
+  <strong>Loading...</strong>
+</ng-template>
+  

@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-1">
+    <h2>New Transaction</h2>
+    <p id="status">{{ status }}</p>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="form-group">
+        <label for="key"><strong>Private key:</strong></label>
+        <input 
+          type="text" 
+          class="form-control"
+          ngModel
+          name="key"
+          required
+          pattern="[A-Fa-f0-9]*"
+          #keyField="ngModel">
+          <span class="help-block" *ngIf="!keyField.valid && keyField.touched">Please enter a valid key</span>
+      </div>
+      <div class="form-group">
+        <label for="address"><strong>Address Of Receiver:</strong></label>
+        <input 
+          type="text" 
+          class="form-control"
+          ngModel
+          name="address"
+          required
+          pattern="[A-Fa-f0-9]{64}"
+          #addressField="ngModel">
+        <span class="help-block" *ngIf="!addressField.valid && addressField.touched">Please enter a valid address</span>
+      </div>
+      <div class="form-group">
+        <label for="amount"><strong>Amount:</strong></label>
+        <input 
+          type="number" 
+          class="form-control"
+          ngModel
+          name="amount"
+          min="1"
+          required
+          #numberField="ngModel">
+        <span class="help-block" *ngIf="!addressField.valid && addressField.touched">Please enter a number greater than 0</span>
+      </div>
+      <button 
+        class="btn btn-primary" 
+        type="submit"
+        [disabled]="!transactionForm.form.valid">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-xs-5 col-xs-offset-1">
+    <h2>Information</h2>
+    <hr>
+    <p *ngIf="validFetched; else loading">The chain is <span [ngStyle]="{color: valid === true ? 'green' : 'red'}"><strong *ngIf="valid; else invalid">valid</strong></span></p>
+    <hr>
+  </div>
+</div>
+<div *ngIf="infoFetched; else loading" class="row">
+  <div class="col-xs-5 col-xs-offset-1">
+    <p>Chain length: {{ length }}</p>
+    <p>Genesis block created: {{ genesisAdded }}</p>
+    <p>Latest block added: {{ latestAdded }}</p>
+    <p>Current difficulty: {{ currentDifficulty }}</p>
+    <br>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-5 col-xs-offset-1">
+    <hr>
+    <p *ngIf="infoFetched">{{ counter }} seconds since last check</p>
+    <button (click)="onCheckStatus()" class="btn btn-primary">Refresh</button>
+  </div>
+</div>
+
+<ng-template #invalid>
+  <strong>invalid</strong>
+</ng-template>
+
+<ng-template #loading>
+  <p><strong>Loading...</strong></p>
+</ng-template>

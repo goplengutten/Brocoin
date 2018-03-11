@@ -1,0 +1,61 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-xs-7">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">      
+        <div class="form-group">
+          <label for="address"><strong>Address:</strong></label>
+          <input 
+            type="text"
+            class="form-control"
+            ngModel
+            name="address"
+            required
+            pattern="[A-Fa-f0-9]{64}"
+            #addressField="ngModel">
+          <span class="help-block" *ngIf="!addressField.valid && addressField.touched">Please enter a valid address</span>
+        </div>
+        <button 
+          class="btn btn-primary" 
+          type="submit"
+          [disabled]="!addressForm.form.valid">
+          Get Transactions
+        </button>
+      </form>
+      <br>
+      <p *ngIf="address">Current Address: {{ address }}</p>
+      <hr>
+    </div>
+  </div>
+  <div *ngIf="fetched" class="row">
+    <div class="col-xs-7">
+      <h2>Received Transactions</h2>
+      <div *ngIf="transactionsReceived.length > 0; else noTransactions">
+        <div *ngFor="let transaction of transactionsReceived">
+          <hr>
+          <div>Sender: {{ transaction.address }}</div>
+          <div>Amount: {{ transaction.amount }}</div>
+          <div>Date: {{ transaction.time }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="fetched" class="row">
+    <div class="col-xs-7">
+      <h2>Sent Transactions</h2>
+      <div *ngIf="transactionsSent.length > 0; else noTransactions">
+        <div *ngFor="let transaction of transactionsSent">
+          <hr>
+          <div>Sender: {{ transaction.address }}</div>
+          <div>Amount: {{ transaction.amount }}</div>
+          <div>Date: {{ transaction.time }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+<ng-template #noTransactions>
+  <p>No Transactions</p>
+</ng-template>
