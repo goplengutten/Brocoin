@@ -13,7 +13,11 @@ module.exports = {
     
     Blockchain.findOne({}).populate("blocks").exec((err, blockchain) => {
       if(err) throw err
-      
+      if(!blockchain){
+        console.log("create a chain")
+        process.exit()
+      }
+
       let difficulty = blockchain.difficulty
       let index = blockchain.blocks.length
       let previousHash = blockchain.blocks[blockchain.blocks.length - 1].hash
@@ -26,21 +30,20 @@ module.exports = {
         previousHash: previousHash,
 
       }
-
-      let stringToMine = difficulty + minerAddress + index + transaction + previousHash
-      
+      let stringToMine = difficulty + minerAddress + index + transaction + previousHash      
       console.log("********************************************")
       console.log("transaction:", transaction.length > 0 ? transaction : "no transaction")
       console.log("starting to mine a block")
 
-      let mining = spawn('python', ["pow.py", stringToMine, difficulty])
+      let mining = spawn('node', ["pow.js", stringToMine, difficulty])
       
       mining.stdout.on('data', (response) => {
         let nonce = parseInt(response.toString('utf8'))
         info.nonce = nonce
         let string = stringToMine + nonce
         info.hash = SHA256(string).toString()
-        this.blockMined(info) 
+        this.blockMined(info)     
+        
       })
     })
   },

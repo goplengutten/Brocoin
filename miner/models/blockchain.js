@@ -10,7 +10,7 @@ const blockchainSchema = new Schema({
   }],
   difficulty: {
     type: Number,
-    default: 6
+    default: 4
   }
 })
 

@@ -63,7 +63,7 @@ Go to localhost:3000 in your browser.
 
 Go to the "Generate key" tab and generate a new key/address. Save both.
 
-Open the miner.js file in the miner folder and add the address you just created to 'minerAddress = "your address here"'. This is the address that will get the reward for mining blocks.
+Open the miner.js file in the miner folder in a text editor and add the address you just created to 'minerAddress = "your address here"'. This is the address that will get the reward for mining blocks.
 
 To start mining on the newly created blockchain, run
 ```
